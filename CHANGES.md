@@ -4,9 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.22.3] - 2026-02-20
 ### Fixed
 - Added type hints everywhere in the project. This will make the project easier to maintain and use. A big thanks goes out to [Renato Rotenberg](https://github.com/Brawmario) for submitting a PR to get the work started ([#200](https://github.com/derkork/godot-statecharts/pull/200)).
+- Fixed a typing error in the `StateChart` class which would prevent the addon from loading when addons were included in type checking ([#213](https://github.com/derkork/godot-statecharts/issues/213)).
 
 ## [0.22.2] - 2025-10-23
 ### Fixed
