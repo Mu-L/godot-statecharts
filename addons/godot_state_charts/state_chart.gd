@@ -335,7 +335,7 @@ func freeze() -> void:
 	_frozen = true
 	var to_freeze:Array[StateChartState] = [_state]
 	while not to_freeze.is_empty():
-		var next := to_freeze.pop_back()
+		var next:StateChartState = to_freeze.pop_back()
 		next._toggle_processing(true)
 		for child in next.get_children():
 			if child is StateChartState:
@@ -345,7 +345,7 @@ func freeze() -> void:
 func thaw() -> void:
 	var to_thaw:Array[StateChartState] = [_state]
 	while not to_thaw.is_empty():
-		var next := to_thaw.pop_back()
+		var next:StateChartState = to_thaw.pop_back()
 		next._toggle_processing(false)
 		for child in next.get_children():
 			if child is StateChartState:
