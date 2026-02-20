@@ -139,7 +139,10 @@ func _state_save(saved_state:SavedState, child_levels:int = -1) -> void:
 
 	# create a new SavedState object for this state
 	var our_saved_state := SavedState.new()
-	our_saved_state.pending_transition_name = _pending_transition.name if _pending_transition != null else ""
+	if _pending_transition != null:
+		our_saved_state.pending_transition_name = NodePath(_pending_transition.name)
+	else:
+		our_saved_state.pending_transition_name = ""
 	our_saved_state.pending_transition_remaining_delay = _pending_transition_remaining_delay
 	our_saved_state.pending_transition_initial_delay = _pending_transition_initial_delay
 	# add it to the parent

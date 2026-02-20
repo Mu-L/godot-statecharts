@@ -187,7 +187,7 @@ func send_event(event:StringName) -> void:
 ## Sets a property that can be used in expression guards. The property will be available as a global variable
 ## with the same name. E.g. if you set the property "foo" to 42, you can use the expression "foo == 42" in
 ## an expression guard.
-func set_expression_property(name:StringName, value) -> void:
+func set_expression_property(property_name:StringName, value) -> void:
 	if _frozen:
 		push_error("The state chart is currently frozen. Cannot set expression properties.")
 		return
@@ -200,7 +200,7 @@ func set_expression_property(name:StringName, value) -> void:
 		push_error("State chart has no root state. Ignoring call to `set_expression_property`.")
 		return
 
-	_expression_properties[name] = value
+	_expression_properties[property_name] = value
 	_property_change_pending = true
 
 	if not _locked_down:
@@ -209,8 +209,8 @@ func set_expression_property(name:StringName, value) -> void:
 
 ## Returns the value of a previously set expression property. If the property does not exist, the default value
 ## will be returned.
-func get_expression_property(name:StringName, default:Variant = null) -> Variant:
-	return _expression_properties.get(name, default)
+func get_expression_property(property_name:StringName, default:Variant = null) -> Variant:
+	return _expression_properties.get(property_name, default)
 
 
 func _run_changes() -> void:

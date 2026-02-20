@@ -7,8 +7,6 @@ extends Node
 const DebuggerMessage = preload("editor_debugger_message.gd")
 const SettingsPropagator = preload("editor_debugger_settings_propagator.gd")
 
-# The scene tree, needed to interface with the settings propagator
-var _tree:SceneTree
 
 # the state chart we track
 var _state_chart:StateChart 
@@ -96,7 +94,7 @@ func _on_state_entered(state:StateChartState) -> void:
 func _on_state_exited(state:StateChartState) -> void:
 	DebuggerMessage.state_exited(_state_chart, state)
 
-func _on_transition_pending(num1, remaining, state:StateChartState) -> void:
+func _on_transition_pending(_ign, remaining, state:StateChartState) -> void:
 	DebuggerMessage.transition_pending(_state_chart, state, state._pending_transition, remaining)
 		
 

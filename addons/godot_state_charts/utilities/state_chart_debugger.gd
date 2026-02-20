@@ -126,9 +126,9 @@ func _debug_node(root:Node) -> bool:
 	return false
 
 
-func _setup_processing(enabled:bool) -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS if enabled else Node.PROCESS_MODE_DISABLED
-	visible = enabled
+func _setup_processing(processing_enabled:bool) -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS if processing_enabled else Node.PROCESS_MODE_DISABLED
+	visible = processing_enabled
 
 
 ## Disconnects all signals from the currently connected states.
@@ -181,7 +181,7 @@ func _connect_signals(state:StateChartState) -> void:
 			_connected_transitions[child] = callable
 
 
-func _process(delta:float) -> void:
+func _process(_delta:float) -> void:
 	# Clear contents
 	_tree.clear()
 
